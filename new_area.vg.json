@@ -1,0 +1,41 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title":{
+      "text":"Total Alcohol consumption",
+      "subtitle":"by type of alcoholic beverage over time",
+      "subtitleFontSize":16,
+      "fontSize":20,
+      "align": "center"
+    },
+    "width": "container", "height": 300,
+    "data": {"url":"https://raw.githubusercontent.com/Kaylee314/3179_testrepo/main/Newdrink.csv"},
+    "mark": "area",
+    "encoding": {
+      "x": {
+        "field": "Year ended 30 June",
+        "type":"ordinal",
+        "title":"Year"
+      },
+      "y": {
+        "aggregate": "sum", 
+        "field": "Pivot Field Values",
+        "title": "Total alcohol consumed (in liters)"
+      },
+      "color": {
+        "field": "Type",
+        "scale": {
+         "scheme":"category20c" },
+        "legend":{
+          "orient":"bottom",
+          "direction":"horizontal"
+        }
+      },
+      "tooltip":[
+        {"field": "Type", "type": "nominal"},
+            {"field": "Year ended 30 June", "type": "nominal"},
+            {"field": "Pivot Field Values", "title": "Consumed Volume (in liters)","type": "quantitative", "format": ","}]
+    },
+    "config": {
+      "background":"eef7f7"
+    }
+  }

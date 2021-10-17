@@ -1,0 +1,42 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title":{
+      "text": "Alcohol drinking frequency in adults in 2019",
+      "fontSize":21},
+    "width": "container",
+    "height":300,
+    "data": {
+      "values": [
+        {"Drinking frequency": "Never", "People": 3050,"Percent":"24%"},
+        {"Drinking frequency": "Less than weekly", "People": 3762,"Percent":"29.6%"},
+        {"Drinking frequency": "Weekly", "People": 4956,"Percent":"39%"},
+        {"Drinking frequency": "Daily", "People": 940,"Percent":"7.4%"}
+      ]
+  },
+    "mark": {"type": "arc", "innerRadius": 80},
+    "encoding": {
+      "theta": {"field": "People", "type": "quantitative"},
+      "color": {
+        "field": "Drinking frequency",
+        "type": "nominal",
+        "scale": {
+          "scheme":"category20c"
+        },
+        "legend":{
+          "orient":"bottom-left"
+        }
+    },
+      "tooltip":[
+          {"field": "Drinking frequency", "type": "nominal"},
+          {"field": "People", "type": "quantitative", "format": ","},
+          {"field": "Percent","type": "nominal"}
+        ]
+          
+      },
+      "config": {
+        "background":"eef7f7",
+        "view": {
+          "stroke": "transparent"
+       }
+      }
+  }

@@ -1,0 +1,91 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text":"Worldwide Alcohol Consumption Per Capita in 2018",
+      "subtitle":"Alcohol consumption is measured in liters of pure alcohol per capita aged 15 or older",
+      "subtitleFontSize":16,
+      "align": "center",
+      "fontSize": 20
+    },
+    "width": "container",
+    "height": 500,
+    "data": {
+      "url": "https://raw.githubusercontent.com/Kaylee314/3179_testrepo/main/ne_110m_admin_0_countries.json",
+      "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    },
+    "params": [
+      {
+        "name": "Consumed_volume_above",
+        "value":0,
+        "bind":{
+          "input":"range",
+          "min":0,
+          "max":16,
+          "step":2,
+          "name": "Minimum alcohol consumed volume: "
+        }
+      },
+      {
+        "name": "Consumed_volume_below",
+        "value": 16,
+        "bind": {
+          "input": "range",
+          "min": 0,
+          "max": 16,
+          "step": 2,
+          "name": "Maximum alcohol consumed volume: "
+      } 
+    }
+    ],
+    "projection": {"type": "equirectangular"},
+    "layer": [
+      {"mark":{
+        "type":"geoshape","fill":"lightgray",
+        "stroke":"white"}
+      },
+      {"transform": [
+        {
+          "lookup": "properties.NAME",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Kaylee314/3179_testrepo/main/pure2.csv"
+        },
+          "key": "Country",
+          "fields": ["Values"]
+        }
+      },
+      {"filter":"datum.Values > Consumed_volume_above "},
+      {"filter":"datum.Values < Consumed_volume_below "}
+    ],
+    "mark": {
+      "type":"geoshape",
+      "stroke":"white",
+      "strokeWidth":0.5},
+    "encoding": {
+      "color": {
+        "field": "Values",
+        "type": "quantitative",
+        "scale": {
+          "type":"threshold",
+          "domain":[0,2,4,6,8,10,12,14,16],
+          "scheme": "yellowgreenblue"
+        },
+        "legend":{
+          "title":"Total consumed (in liters)",
+          "orient":"bottom-right",
+          "direction": "horizontal"
+        }
+      },
+      "tooltip": [
+        {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+        {"field": "Values", "title":"Consumed By Capita","type": "quantitative"}
+       ]
+     }
+   }
+ ],
+      "config": {
+      "background":"eef7f7",
+      "view": {
+        "stroke": "transparent"
+     }}
+}

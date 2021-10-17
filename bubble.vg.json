@@ -1,0 +1,164 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 400,
+    "width": "container",
+    "title": {
+      "text":"Alcohol Consumption vs Happiness Score",
+      "fontSize":20},
+    "data": {
+      "url": "https://raw.githubusercontent.com/Kaylee314/3179-vss2/main/HappinessAlcohol.csv"
+    },
+    
+    "params": [
+      {
+        "name":"region_hightlight",
+        "select":{
+          "type":"point",
+          "fields":["Region"]},
+          "bind":"legend"
+        },
+        {
+          "name": "Total_consumed_Above",
+          "value": 0,
+          "bind": {
+            "input": "range",
+            "min": 0,
+            "max": 400,
+            "step": 10,
+            "name": "Minimum Alcohol Consumed: "
+        } 
+      },
+      {
+        "name": "Total_consumed_Below",
+        "value": 400,
+        "bind": {
+          "input": "range",
+          "min": 0,
+          "max": 400,
+          "step": 10,
+          "name": "Maximum Alcohol Consumed: "
+      } 
+    },
+      {
+        "name":"Region_selection",
+        "bind": {
+          "input":"select",
+          "options":[
+            null,
+            "Western Europe",
+            "North America",
+            "Australia and New Zealand",
+            "Middle East and Northern Africa",
+            "Latin America and Caribbean",
+            "Southeastern Asia",
+            "Central and Eastern Europe",
+            "Eastern Asia",
+            "Sub-Saharan Africa"
+          ],
+          "labels":[
+            "Show All",
+            "Western Europe",
+            "North America",
+            "Australia and New Zealand",
+            "Middle East and Northern Africa",
+            "Latin America and Caribbean",
+            "Southeastern Asia",
+            "Central and Eastern Europe",
+            "Eastern Asia",
+            "Sub-Saharan Africa"
+          ],
+          "name":"Region Selection: "
+        }
+      }
+    ],
+    "transform":[
+      {"filter": "datum.Beer_PerCapita > 0"},
+      {"filter": "datum.HappinessScore > 0"},
+      {"filter": "Region_selection == null || datum.Region == Region_selection"},
+      {"filter": "datum.Beer_PerCapita > Total_consumed_Above"},
+      {"filter": "datum.Beer_PerCapita < Total_consumed_Below"}
+    ], 
+    "mark": "circle",
+    "encoding": {
+      "x": {
+        "field": "HappinessScore",
+        "type": "quantitative",
+        "title":"Happiness Score",
+        "axis": { "tickCount": 7},
+        "scale": {"type": "linear",  "domain":[0, 8]}
+      },
+      "y": {
+        "field": "Beer_PerCapita",
+        "type": "quantitative",
+        "title":"Beer consumed per capita",
+        "axis": { "tickCount": 6},
+        "scale": {"type": "linear", "domain":[0, 400]}
+      },
+      "fill": {"field": "Region",  "type": "nominal","scale": {"domain":["Western Europe",
+            "North America",
+            "Australia and New Zealand",
+            "Middle East and Northern Africa",
+            "Latin America and Caribbean",
+            "Southeastern Asia",
+            "Central and Eastern Europe",
+            "Eastern Asia",
+            "Sub-Saharan Africa"], 
+            "range": [
+              "#a6cee3",
+              "#1f78b4",
+              "#b2df8a",
+              "#33a02c",
+              "#fb9a99",
+              "#e31a1c",
+              "#fdbf6f",
+              "#ff7f00",
+              "#cab2d6"]
+          }},
+      "color": {"field": "Region", 
+                "type": "nominal",
+                "scale": {
+                  "domain":[
+                    "Western Europe",
+                    "North America",
+                    "Australia and New Zealand",
+                    "Middle East and Northern Africa",
+                    "Latin America and Caribbean",
+                    "Southeastern Asia",
+                    "Central and Eastern Europe",
+                    "Eastern Asia",
+                    "Sub-Saharan Africa"],
+                  "range": [
+                    "#a6cee3",
+                    "#1f78b4",
+                    "#b2df8a",
+                    "#33a02c",
+                    "#fb9a99",
+                    "#e31a1c",
+                    "#fdbf6f",
+                    "#ff7f00",
+                    "#cab2d6"]}        
+      },
+      "opacity": {
+        "condition": {"param": "region_hightlight", "value":0.9},
+        "value": 0
+      },
+      "size": {
+        "field": "Beer_PerCapita", 
+        "title": "Beer Per Capita (in liters)",
+        "type": "quantitative",  
+        "scale": {
+          "type": "threshold",
+          "domain":[10,50,100,200,300],
+          "range": [10, 50, 100,200,300]}
+  },
+      "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {"field": "Region", "type": "nominal"},
+        {"field": "HappinessScore", "title":"Happiness Score","type": "quantitative", "format": ","},
+        {"field": "Beer_PerCapita", "title":"Beer Per Capita","type": "quantitative", "format": ","}
+      ]
+    },
+    "config": {
+      "background":"eef7f7"
+    }
+}

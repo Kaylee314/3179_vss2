@@ -1,0 +1,78 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { 
+      "text": "Top 10 Countries",
+      "subtitle":"Litres of pure alcohol consumed",
+      "fontSize": 20,
+      "subtitleFontSize": 16},
+      "width": "container",
+      "height": 300,
+      "data": {
+          "url": "https://raw.githubusercontent.com/Kaylee314/3179_testrepo/main/altop10.csv",
+          "format": {"type": "csv", "parse": {"Total": "number"}}
+      },
+          "transform": [
+        {
+            "window": [
+            {
+                 "op": "rank",
+                 "as": "rank"
+        }],
+        "sort": [{ 
+            "field": "Total", 
+            "order": "descending"}]
+      }, {
+        "filter": "datum.rank <= 10"
+      }
+    ],
+     "encoding": {
+          "y": { "field": "Country", "type": "nominal",
+          "sort": {"field": "Total", "order": "descending"}
+      },
+          "x": { "field": "Total", "type": "quantitative"}
+      },
+    "layer": [{
+      "mark": "bar",
+      "encoding": {
+        "color": {
+          "field": "Total",
+          "type": "quantitative",
+          "scale": {
+            "type":"threshold",
+          "domain":[12.5,13,13.5,14,15,16,17],
+            "scheme":"yellowgreenblue"},
+          "title": null,
+          "legend":null
+        },
+        "tooltip": [
+          {"field": "Country", "type": "ordinal"},
+          {"field": "Total", "type": "quantitative", "title": "Pure alcohol consumption","format":","},
+          {"field": "Beer(%)", "type": "nominal", "title": "Beer"},
+          {"field": "(%)Spirits", "type": "nominal", "title": "Spirit"},
+          {"field": "(%)Wine", "type": "nominal", "title": "Wine"},
+          {"field": "(%)Other", "type": "nominal", "title": "Other"}
+        ]
+      }
+    }, {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "xOffset": -4,
+        "aria": false
+      },
+      "encoding": {
+        "text": {"field": "Total", "type": "quantitative"},
+        "color": {
+          "condition": {
+            "test": {"field": "Total", "gt": 10},
+            "value": "white"
+          },
+          "value": "black"
+        }
+      }
+    }],
+    "config": {
+      "background":"eef7f7"
+    }
+  }
+  

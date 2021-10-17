@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Visualisations | An Example</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Fondamento&family=Roboto:wght@500&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+  
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+</head>
+<body>
+
+ <div class="page">
+
+<!-- pure grid group -->
+<!--title-->
+<div class="pure-g">
+  <div class="pure-u-2-3">
+    <div class="description description-top-left">
+      <h1>Alcohol Consumption</h1>
+    </div>
+  </div>
+</div>
+<!--title-->
+
+  <!--text-->
+  <div class="pure-g">
+    <div class="pure-u-1-3">
+      <div class="description description-top-left">
+      <p><span class='bond'>Alcohol</span> can be found in beer, wine and spirits which causes people drunkenness. 
+        But in moderation, alcohol can act <span class='bond'>as a stimulant</span>, making people cheerful and talkative. 
+        For example, people will drink in some parties for social, celebreting and relaxing. </p>
+      </div>
+    </div>
+    <div class="pure-u-1-3">
+      <div class="description description-middle"></div>
+      <p> Different alcoholic drinks contain <span class='bond'>different alcohol content</span>. 
+        For example, the alcohol content of red wine is about 12%, 
+        while that of spirits is 40% and that of beer is only 5%.
+      Therefore, reported in liters of pure alcohol. </p>
+    </div>
+    <div class="pure-u-1-3">
+      <img src="drinkiq.png" id="chart1"> 
+    </div>
+  </div>
+<!-- end pure grid group -->
+
+   <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div id="ass1" class="vis-container"></div>
+      </div>
+    </div>
+  <!-- end pure grid group -->
+    
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p> <span class='bond'>Estonia</span> is the <span class='bond'>Top 1</span> countries with <span class='bond'>the highest</span> pure alcohol consumption per capita
+              and is follwered by Lithuania, Czech Republic and Seychelles etc. </p>
+              <p>The highest rates of alcohol consumption seem to be mostly concentrated <span class='bond'>in European countries </span>
+                such as Estonia, Lithuania, Czech Republic and Germany also are in Europe.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="ass2" class="vis-container" style="border: none;"></div>
+        </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-2-3">
+          <div id="ass3"  class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="description description-right">
+            <p>It shows the change in consumption of alcoholic beverages <span class='bond'>over time</span>.</p>
+            <p>Beer and wine account for almost <span class='bond'>80%</span> of the world's pure alcohol consumption.</p>
+
+            <p>As is shown in the chart, the world‘s alcohol consumption is also <span class='bond'>relatively stable</span>, fluctuating <span class='bond'>between 9 and 11 litres</span>.</p>
+          </div>
+        </div>
+      
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-2-3">
+        <div id="ass4"  class="vis-container" style="border: none;"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <p>Approximately <span class='bond'>80%</span> of people drink alcohol <span class='bond'>at least once a week</span>, 
+            including <span class='bond'>29.6%</span> of people who drinkless than weekly and <span class='bond'>7.4%</span> of people who drink daily. 
+            However, there are still <span class='bond'>24%</span> of people <span class='bond'>never drink alcohol</span> at all.</p>
+        </div>
+      </div>
+    
+  </div>
+  <!-- end pure grid group -->
+
+  <!-- pure grid group -->
+  <div class="pure-g">
+    <div class="pure-u-1-3">
+      <div class="description description-left">
+        <p>Countries with higher levels of happiness will have higher beer consumption, but they also have lower beer consumption.
+          It seems that happiness is <span class='bond'>not highly correlated with</span> alcohol consumption.</p>
+          <p>A country's happiness may be more strongly correlated with other factors than alcohol consumption, may be the country's overall GDP level or its human development index. </p>
+      </div>
+    </div>
+    <div class="pure-u-2-3">
+      <div id="ass5" class="vis-container"></div>
+    </div>
+</div>
+<!-- end pure grid group -->
+  
+ <div class="pure-g">
+  <div class="pure-u-1-1 small-font">
+    <p>This visualisation is created by <a href="https://github.com/Kaylee314/3179_vss2" target="_blank">Xiaotong Xie</a>. 
+      The datasource is <a href="https://ourworldindata.org/alcohol-consumption" target="_blank">some data repository online</href>.</p>
+  </div>
+</div>
+
+
+   
+<script type="text/javascript">
+  var specAss1 = "./newmap.vg.json"
+  var specAss2 = "./ranking.vg.json";
+  var specAss3= "./new_area.vg.json";
+  var specAss4= "./newpie.vg.json";
+  var specAss5= "./bubble.vg.json";
+
+
+  vegaEmbed('#ass1', specAss1, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#ass2', specAss2, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+   vegaEmbed('#ass3', specAss3, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#ass4', specAss4, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#ass5', specAss5, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+</body>
+</html>

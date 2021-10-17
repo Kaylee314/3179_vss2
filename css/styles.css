@@ -1,0 +1,78 @@
+{
+  font-family: 'Fondamento', cursive;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Scheherazade New', serif;
+}
+  
+  .chartContainer {
+    padding-right: 20px;
+      margin-top: 10px;
+  }
+  .note-left {
+    padding-right: 50px;
+  }
+  
+  img {
+    padding-left: 20px;
+    width: 313px;
+  }
+    h1{
+      font-family: 'Roboto', sans-serif;
+      font-weight: 900;
+    }
+     body{
+       background-color:#eef7f7;
+     }
+     .page{
+       width: 1000px;    
+       background-color: eef7f7;   
+       margin: auto;
+       padding: 50px;
+       padding-top: 35px;
+    }
+    .vis-container{
+      width: 100%;
+      border: none;
+    }
+    .description h2, h1{
+      margin-top:0px;
+      margin-bottom: -30px;
+    }
+    .description-right {
+      padding-left: 20px;
+      padding-bottom: -15px;
+      padding-top: 60px;
+      border: none;
+    }
+    .description-middle {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .description-left{
+      padding-right: 20px;
+      padding-bottom: -30px;
+      padding-top: 30px;
+    }
+    .description-top-left{
+      padding-right: 20px;
+    }
+
+    .pure-g{
+      margin-bottom: 25px;
+    }
+    .small-font{
+        font-size: 14px;
+    }
+    p {
+      font-family: 'Scheherazade New', serif;
+      text-align: justify;
+      text-justify: inter-word;
+      color: black;
+      line-height: 1.5;
+      font-size: 19px;
+    }
+    .bond {
+      color:rgb(27, 27, 122);
+      font-size: 21px;
+      font-weight: bold; 
+    }
